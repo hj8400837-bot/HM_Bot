@@ -4,7 +4,7 @@ import time
 
 # --- Page Configuration ---
 st.set_page_config(
-    page_title="Hasan Malik Ji Trading Bot", 
+    page_title="Hasan Malik g Trading Bot", 
     page_icon="🚀", 
     layout="centered"
 )
@@ -18,7 +18,7 @@ col1, col2, col3 = st.columns([1, 1.2, 1])
 with col2:
     st.image(
         IMAGE_URL, 
-        caption="Hasan Malik ji ❤️ EH ❤️", 
+        caption="Hasan Malik ❤️ EH ❤️", 
         use_container_width=True
     )
 
