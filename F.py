@@ -155,8 +155,7 @@ def calculate_rsi(values, period=14):
     
     
     def analyze_market(values):
-
-    prices = pd.Series(values)
+      prices = pd.Series(values)
 
     ema9 = prices.ewm(
         span=9,
