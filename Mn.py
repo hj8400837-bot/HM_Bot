@@ -42,7 +42,66 @@ def analyze(x):
     else:
         sig = "NO TRADE"
 
-    conf = min(95, 50 + score * 5)
+   file = st.file_uploader(
+    "Historical OHLC CSV",
+    type="csv"
+)
+
+def analyze(x):
+    s = pd.Series(x)
+    e9 = s.ewm(span=9, adjust=False).mean().iloc[-1]
+    e21 = s.ewm(span=21, adjust=False).mean().iloc[-1]
+    e50 = s.ewm(span=50, adjust=False).mean().iloc[-1]
+
+    if e9 > e21 > e50:
+        trend = "UP"
+        signal = "UP"
+    elif e9 < e21 < e50:
+        trend = "DOWN"
+        signal = "DOWN"
+    else:
+        trend = "SIDEWAYS"
+        signal = "NO TRADE"
+
+    return signal, trend
+
+
+if st.button("🚀 NEXT CANDLE", use_container_width=True):
+
+    if file is None:
+        st.warning("پہلے OHLC CSV upload کریں۔")
+        st.stop()
+
+    df = pd.read_csv(file)
+
+    close = next(
+        (c for c in df.columns if c.strip().lower() == "close"),
+        None
+    )
+
+    if close is None:
+        st.error("CSV میں Close column لازمی ہے۔")
+        st.stop()
+
+    x = pd.to_numeric(
+        df[close], errors="coerce"
+    ).dropna().values
+
+    if len(x) < 60:
+        st.error("کم از کم 60 candles درکار ہیں۔")
+        st.stop()
+
+    signal, trend = analyze(x)
+
+    if signal == "UP":
+        st.success("⬆️ NEXT CANDLE: UP")
+    elif signal == "DOWN":
+        st.error("⬇️ NEXT CANDLE: DOWN")
+    else:
+        st.warning("⏸️ NO TRADE")
+
+    st.metric("PAIR", pair)
+    st.metric("TREND", trend) conf = min(95, 50 + score * 5)
     return sig, conf, trend, R
 
 
