@@ -74,8 +74,8 @@ LIVE = [
 TIMEFRAMES = [
     "5 Seconds","10 Seconds","15 Seconds",
     "30 Seconds","1 Minute","2 Minutes",
-    "3 Minutes","4 Minutes","5 Minutes"
-]st.markdown("""
+    "3 Minutes","4 Minutes","5 Minutes"]
+st.markdown("""
 <div class="box">
 <h1>🤖 HASSAN MALIK <span class="blue">AI BOT</span></h1>
 <span class="pro">♛ PRO MAX</span>
