@@ -151,7 +151,10 @@ def calculate_rsi(values, period=14):
 
     rs = avg_gain / avg_loss
 
-    return 100 - (100 / (1 + rs))def analyze_market(values):
+    return 100 - (100 / (1 + rs)).               
+    
+    
+    def analyze_market(values):
 
     prices = pd.Series(values)
 
