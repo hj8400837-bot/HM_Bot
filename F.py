@@ -227,7 +227,10 @@ def calculate_rsi(values, period=14):
     else:
         strength = "WEAK"
 
-    return signal, strength, trend, rsiif st.button(
+    return signal, strength, trend, 
+    rsi    
+    
+    if st.button(
     "🚀 NEXT CANDLE GENERATE SIGNAL",
     use_container_width=True
 ):
